@@ -1,11 +1,16 @@
 package ayush.springframework.ayushdi.controllers;
 
-import org.springframework.stereotype.Controller;
+import ayush.springframework.ayushdi.services.GreetingService;
+ import org.springframework.stereotype.Controller;
 
 @Controller
 public class MyController {
-    public String sayHello(){
-        System.out.println("Hello world");
-        return "Hi folks";
+    private final GreetingService greetingService;
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    public String getGreeting(){
+        return greetingService.sayGreeting();
     }
 }
